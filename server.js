@@ -1,3 +1,18 @@
+/*********************************************************************************
+* WEB322 – Assignment 02
+* I declare that this assignment is my own work in accordance with Seneca Academic Policy. No part
+* of this assignment has been copied manually or electronically from any other source
+* (including 3rd party web sites) or distributed to other students.
+*
+* Name: Faisal A Mohammed Abdulateef Student ID: 163686215 Date: February 5, 2023
+*
+* Cyclic Web App URL: https://puce-dizzy-katydid.cyclic.app/
+*
+* GitHub Repository URL: https://github.com/FaisalAbdulateef/web322-app
+*                        or https://github.com/FaisalAbdulateef/web322-app.git
+*
+********************************************************************************/ 
+
 var express = require("express");
 var blogService = require(__dirname + "/blog-service.js");
 var app = express();
