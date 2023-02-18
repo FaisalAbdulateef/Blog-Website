@@ -60,3 +60,56 @@ module.exports.getCategories = () => {
     }
   });
 };
+
+module.exports.addPost = (postData) => {
+  return new Promise(function (resolve) {
+    if (postData.published === undefined) {
+      postData.published = false;
+    } else {
+      postData.published = true;
+    }
+
+    postData.id = posts.length + 1;
+    posts.push(postData);
+    resolve(postData);
+  });
+};
+
+module.exports.getPostsByCategory = (category) => {
+  return new Promise(function (resolve, reject) {
+    const Posts = posts.filter((POST) => POST.category == category);
+
+    if (Posts.length === 0) {
+      reject("no results returned");
+    } else {
+      resolve(Posts);
+    }
+  });
+};
+
+module.exports.getPostsByMinDate = (minDateStr) => {
+  return new Promise(function (resolve, reject) {
+    const Posts = posts.filter(
+      (POST) => new Date(POST.postDate) >= new Date(minDateStr)
+    );
+
+    if (Posts.length === 0) {
+      reject("no results returned");
+    } else {
+      console.log("The postDate value is greater than minDateStr");
+      resolve(Posts);
+    }
+  });
+};
+
+module.exports.getPostById = (id) => {
+  return new Promise(function (resolve, reject) {
+    const Posts = posts.filter((POST) => POST.id == id);
+
+    if (Posts.length === 0) {
+      reject("no result returned");
+    } else {
+      resolve(Posts);
+    }
+  });
+};
