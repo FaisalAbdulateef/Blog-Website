@@ -10,7 +10,7 @@
       <link rel="stylesheet" href="https://bootswatch.com/3/cerulean/bootstrap.min.css"/>
       <link rel="stylesheet" href="public\css\main.css">
 
-      <title>About</title>
+      <title>Faisal A Mohammed Abdulateef's Blog</title>
   </head>
   <body>
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -29,32 +29,19 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="/blog">Blog</a></li>
-            <li class="active"><a href="/about">About</a></li>
+            {{#navLink "/blog"}}Blog{{/navLink}}
+            {{#navLink "/about"}}About{{/navLink}}
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/posts">Posts</a></li>
-            <li><a href="/categories">Categories</a></li>
-            <li><a href="/posts/add">Add Post</a></li>         
+            {{#navLink "/posts"}}Posts{{/navLink}}
+            {{#navLink "/categories"}}Categories{{/navLink}}
+            {{#navLink "/posts/add"}}Add Post{{/navLink}}
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
     <div class="container" style="padding-top:60px">
-      <div class="row">
-        <section class="main col-md-9">
-          <article>
-          <h2>About</h2>
-            <p>My name is Faisal A Mohammed Abdulateef, and I am currently studying an Advanced Diploma in Computer Programming & Analysis at Seneca College School of Software Design & Data Science. <br>
-              I am very interested in Software Engineering and Web Development, and I have built several websites using libraries such as React. <br> I also have experience with Object-Oriented languages such as C++ and Java.<br>
-              My current goals are to get better at Object-Oriented programming and to intern at a big tech company as a Software Engineer or a Web Developer, as I have experience in these two roles.<p>
-          </article>
-        </section>
-        <aside class="col-md-3">
-          <h2>Coming Soon</h2>
-          <p>Stay tuned for future updates...</p>
-        </aside>
-      </div>
+      {{{body}}}
     </div>
 
     <!-- Latest compiled and minified jQuery 3.6.0 JavaScript -->

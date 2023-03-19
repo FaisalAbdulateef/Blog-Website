@@ -42,7 +42,18 @@ module.exports.getAllPosts = () => {
 
 module.exports.getPublishedPosts = () => {
   return new Promise(function (resolve, reject) {
-    var Posts = posts.filter((POST) => POST.published === true);
+    var Posts = posts.filter((POST) => POST.published == true);
+    if (Posts.length == 0) {
+      reject("no results returned");
+    } else {
+      resolve(Posts);
+    }
+  });
+};
+
+module.exports.getPublishedPostsByCategory = (category) => {
+  return new Promise(function (resolve, reject) {
+    var Posts = posts.filter((POST) => POST.published == true && POST.category == category);
     if (Posts.length == 0) {
       reject("no results returned");
     } else {
@@ -63,12 +74,13 @@ module.exports.getCategories = () => {
 
 module.exports.addPost = (postData) => {
   return new Promise(function (resolve) {
-    if (postData.published === undefined) {
+    if (postData.published == undefined) {
       postData.published = false;
     } else {
       postData.published = true;
     }
 
+    postData.postDate = new Date().toISOString().slice(0, 10);
     postData.id = posts.length + 1;
     posts.push(postData);
     resolve(postData);
@@ -79,7 +91,7 @@ module.exports.getPostsByCategory = (category) => {
   return new Promise(function (resolve, reject) {
     const Posts = posts.filter((POST) => POST.category == category);
 
-    if (Posts.length === 0) {
+    if (Posts.length == 0) {
       reject("no results returned");
     } else {
       resolve(Posts);
@@ -93,7 +105,7 @@ module.exports.getPostsByMinDate = (minDateStr) => {
       (POST) => new Date(POST.postDate) >= new Date(minDateStr)
     );
 
-    if (Posts.length === 0) {
+    if (Posts.length == 0) {
       reject("no results returned");
     } else {
       console.log("The postDate value is greater than minDateStr");
@@ -106,10 +118,10 @@ module.exports.getPostById = (id) => {
   return new Promise(function (resolve, reject) {
     const Posts = posts.filter((POST) => POST.id == id);
 
-    if (Posts.length === 0) {
+    if (Posts.length == 0) {
       reject("no result returned");
     } else {
-      resolve(Posts);
+      resolve(Posts[0]);
     }
   });
 };
