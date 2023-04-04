@@ -9,7 +9,7 @@
  * Cyclic Web App URL: https://zany-blue-lizard-coat.cyclic.app
  *
  * GitHub Repository URL: https://github.com/FaisalAbdulateef/web322-appA5
- *                        or https://github.com/FaisalAbdulateef/web322-appA5.git 
+ *                        or https://github.com/FaisalAbdulateef/web322-appA5.git
  *
  ********************************************************************************/
 
