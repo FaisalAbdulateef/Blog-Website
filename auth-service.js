@@ -21,7 +21,9 @@ let User; // to be defined on new connection (see initialize)
 
 module.exports.initialize = function () {
   return new Promise(function (resolve, reject) {
-    let db = mongoose.createConnection("mongodb+srv://FaisalAbdulateef:QaggJkuxEOz5VXhU@faisalcluster.ylmmq3k.mongodb.net/test");
+    let db = mongoose.createConnection(
+      "mongodb+srv://FaisalAbdulateef:QaggJkuxEOz5VXhU@faisalcluster.ylmmq3k.mongodb.net/test"
+    );
     db.on("error", (err) => {
       reject(err); // reject the promise with the provided error
     });
@@ -73,27 +75,28 @@ module.exports.checkUser = function (userData) {
           bcrypt
             .compare(userData.password, users[0].password)
             .then((result) => {
-              if (result === true) {
-                resolve(users[0]);
-              } else {
+              if (result === false) {
                 reject(`Incorrect Password for user: ${userData.userName}`);
+              } else {
+                users[0].loginHistory.push({
+                  dateTime: new Date().toString(),
+                  userAgent: userData.userAgent,
+                });
+
+                User.updateOne(
+                  { userName: users[0].userName },
+                  { $set: { loginHistory: users[0].loginHistory } }
+                )
+                  .exec()
+                  .then(() => {
+                    resolve(users[0]);
+                  })
+                  .catch((err) => {
+                    reject(`There was an error verifying the user: ${err}`);
+                  });
+
+                resolve(users[0]);
               }
-            });
-          users[0].loginHistory.push({
-            dateTime: new Date().toString(),
-            userAgent: userData.userAgent,
-          });
-          User.updateOne(
-            { userName: users[0].userName },
-            { $set: { loginHistory: users[0].loginHistory } },
-            { multi: false }
-          )
-            .exec()
-            .then(() => {
-              resolve(users[0]);
-            })
-            .catch((err) => {
-              reject(`There was an error verifying the user: ${err}`);
             });
         }
       })

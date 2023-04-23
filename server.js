@@ -170,7 +170,7 @@ app.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-app.get("/userHistory", ensureLogin, (req, res) => {
+app.get("/userHistory", ensureLogin, function (req, res) {
   res.render("userHistory");
 });
 
@@ -269,7 +269,7 @@ app.get("/blog/:id", async (req, res) => {
   res.render("blog", { data: viewData });
 });
 
-app.get("/posts", ensureLogin, (req, res) => {
+app.get("/posts", ensureLogin, function (req, res) {
   const category = req.query.category;
   const minDate = req.query.minDate;
 
@@ -315,7 +315,7 @@ app.get("/posts", ensureLogin, (req, res) => {
   }
 });
 
-app.get("/post/:value", ensureLogin, (req, res) => {
+app.get("/post/:value", ensureLogin, function (req, res) {
   const id = req.params.value;
   blogService
     .getPostById(id)
@@ -327,7 +327,7 @@ app.get("/post/:value", ensureLogin, (req, res) => {
     });
 });
 
-app.get("/posts/add", ensureLogin, (req, res) => {
+app.get("/posts/add", ensureLogin, function (req, res) {
   blogService
     .getCategories()
     .then((data) => {
@@ -338,7 +338,7 @@ app.get("/posts/add", ensureLogin, (req, res) => {
     });
 });
 
-app.get("/posts/delete/:id", ensureLogin, (req, res) => {
+app.get("/posts/delete/:id", ensureLogin, function (req, res) {
   const id = req.params.id;
   blogService
     .deletePostById(id)
@@ -396,7 +396,7 @@ app.post(
   }
 );
 
-app.get("/categories", ensureLogin, (req, res) => {
+app.get("/categories", ensureLogin, function (req, res) {
   blogService
     .getCategories()
     .then((data) => {
@@ -411,11 +411,11 @@ app.get("/categories", ensureLogin, (req, res) => {
     });
 });
 
-app.get("/categories/add", ensureLogin, (req, res) => {
+app.get("/categories/add", ensureLogin, function (req, res) {
   res.render("addCategory");
 });
 
-app.post("/categories/add", ensureLogin, (req, res) => {
+app.post("/categories/add", ensureLogin, function (req, res) {
   blogService
     .addCategory(req.body)
     .then(() => {
@@ -427,7 +427,7 @@ app.post("/categories/add", ensureLogin, (req, res) => {
     });
 });
 
-app.get("/categories/delete/:id", ensureLogin, (req, res) => {
+app.get("/categories/delete/:id", ensureLogin, function (req, res) {
   const id = req.params.id;
   blogService
     .deleteCategoryById(id)
