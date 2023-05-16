@@ -1,16 +1,9 @@
 /*********************************************************************************
-* WEB322 – Assignment 06
-* I declare that this assignment is my own work in accordance with Seneca Academic Policy. No part of this
-* assignment has been copied manually or electronically from any other source (including web sites) or
-* distributed to other students.
-*
-* Name: Faisal A Mohammed Abdulateef Student ID: 163686215 Date: April 23, 2023
+* Name: Faisal A Mohammed Abdulateef Date: April 23, 2023
 *
 * Cyclic Web App URL: https://lazy-gray-clownfish-tux.cyclic.app
 *
 * GitHub Repository URL: https://github.com/FaisalAbdulateef/web322-appA6
-*                        or https://github.com/FaisalAbdulateef/web322-appA6.git
-*
 ********************************************************************************/ 
 
 var express = require("express");
