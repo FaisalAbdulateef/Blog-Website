@@ -1,9 +1,9 @@
 /*********************************************************************************
 * Name: Faisal A Mohammed Abdulateef Date: April 23, 2023
 *
-* Cyclic Web App URL: https://lazy-gray-clownfish-tux.cyclic.app
+* Cyclic Web App URL: https://important-dove-beret.cyclic.app
 *
-* GitHub Repository URL: https://github.com/FaisalAbdulateef/web322-appA6
+* GitHub Repository URL: https://github.com/FaisalAbdulateef/Blog-Website
 ********************************************************************************/ 
 
 var express = require("express");
